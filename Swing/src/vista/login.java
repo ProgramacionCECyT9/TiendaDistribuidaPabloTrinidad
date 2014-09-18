@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -67,8 +68,23 @@ public class login extends JFrame implements ActionListener
     {
         if(e.getSource()==btnEnter)
         {
-            this.dispose();
-            MainPage nwMainPage = new MainPage();
+            String username = txtUsr.getText();
+            char password[] = txtPsw.getPassword();
+            String passwordEsperada = "admin";
+            String passwordCalculada = "";
+            for(int i=0; i<password.length; i++)
+            {
+                passwordCalculada += password[i];
+            }
+            if(passwordCalculada.equals("admin") && username.equals("admin"))
+            {
+                this.dispose();
+                MainPage nwMainPage = new MainPage();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Ups, this is not a valid user");
+            }
         }
     }
     

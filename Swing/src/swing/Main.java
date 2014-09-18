@@ -6,10 +6,11 @@ package swing;
  */
 
 import java.awt.EventQueue;
+import java.sql.SQLException;
 
 public class Main
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws SQLException
     {
         EventQueue.invokeLater(new Runnable()
         {
@@ -19,6 +20,8 @@ public class Main
                 vista.login ventana = new vista.login();
             }
         });
+        controlador.cDatos bd = new controlador.cDatos();
+        bd.conectar();
     }
     
 }
