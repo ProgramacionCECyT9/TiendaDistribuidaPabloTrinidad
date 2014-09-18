@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	{% load static from staticfiles %}
+	<meta charset="UTF-8">
+	<title>Tienda Distribuida</title>
+
+	<meta name="description" content="Sistema "distribuido" donde una base de datos SQL será consumida desde un Java Swing y una app web diseñada en Django con Python, la app estará alojada en Heroku en la dirección: http://tiendadistribuida.herokuapp.com/">
+	<meta name="author" content="Pablo Ángel Trinidad Paz">
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,700,400,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{% static "css/index.css" %}">	
+</head>
+<body>
+    <section id="contenedor">
+   		<article id="Bienvenida">
+   			<h3>Join here</h3>
+   			{% if message %}
+   				<h5 style="color: #EB3A5D;">{{message}}</h5>
+   			{% else %}
+       			<h5>Your data is safe with us</h5>
+       		{% endif %}
+       	</article>	        
+	    <article id="inputs">
+			<form id='login' method='POST' accept-charset='UTF-8'>
+				{% csrf_token %}
+				<div class='container'>
+					<input type='text' name='name' id='name' placeholder="Name" required />
+				</div>
+				<div class='container'>
+					<input type='text' name='username' id='username' placeholder="Username" required />
+				</div>	
+				<div class='container'>
+					<input type='email' name='email' id='email' placeholder="Email" required />
+				</div>			
+				<div class='container'>
+					<input type='password' name='password' id='password' placeholder="Password" required />
+				</div>			
+				<div class='container'>
+					<input type='submit' name='Submit' value='Join' />
+				</div>
+			</form>
+	    </article>
+	    <article id="abajo">
+		    <p>Already a member? <a href="{% url 'home' %}">Login.</a></p>
+	    </article>
+	</section>
+</body>
+</html>
